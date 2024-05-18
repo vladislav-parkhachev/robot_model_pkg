@@ -19,3 +19,6 @@
 <!-- Pi constant -->
 <xacro:property name="pi_const" value="3.14159265"/>
 
+<!-- Robot body and wheel mass -->
+<xacro:property name="body_mass" value="${body_density*body_link_x_dim*body_link_y_dim*body_link_z_dim}"/>
+<xacro:property name="wheel_mass" value="${wheel_density*pi_const*wheel_link_radius*wheel_link_radius*wheel_link_length}"/>
