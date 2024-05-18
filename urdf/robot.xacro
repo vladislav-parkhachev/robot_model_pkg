@@ -39,3 +39,15 @@
 
 <!-- Over here we include the file that defines extra Gazebo options and motion control driver -->
 <xacro:include filename="$(find robot_model_pkg)/urdf/robot.gazebo"/>
+
+<!-- ############################################## -->
+<!-- FROM HERE WE DEFINE LINKS, JOINTS              -->
+<!-- ############################################## -->
+
+<!-- We need to have this dummy link otherwise Gazebo will complain -->
+<link name="dummy">
+</link>
+<joint name="dummy_joint" type="fixed">
+	<parent link="dummy"/>
+	<child link="body_link"/>
+</joint>
