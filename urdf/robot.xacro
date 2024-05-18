@@ -16,4 +16,6 @@
 <xacro:property name="body_density" value="2710.0"/>
 <xacro:property name="wheel_density" value="2710.0"/>
 
+<!-- Pi constant -->
+<xacro:property name="pi_const" value="3.14159265"/>
 
