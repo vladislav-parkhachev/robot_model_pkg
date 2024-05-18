@@ -26,7 +26,7 @@
 <!-- Moments of inertia of the wheel -->
 <xacro:property name="Iz_wheel" value="${0.5*wheel_mass*wheel_link_radius*wheel_link_radius}"/>
 <xacro:property name="I_wheel" value="${(1.0/12.0)*wheel_mass*(3.0*wheel_link_radius*wheel_link_radius+wheel_link_length*wheel_link_length)}"/>
-\
+
 <!-- This macro defines the complete inertial section of the wheel -->
 <!-- It is used later in the code -->
 <xacro:macro name="inertia_wheel">
@@ -51,3 +51,38 @@
 	<parent link="dummy"/>
 	<child link="body_link"/>
 </joint>
+
+<!-- ############################################## -->
+<!-- START: Body link of the robot                  -->
+<!-- ############################################## -->
+
+<link name="body_link">
+	<visual>
+		<geometry>
+			<box size="${body_link_x_dim} ${body_link_y_dim} ${body_link_z_dim}"/>
+		</geometry>
+	<origin rpy="0 0 0" xyz="0 0 0"/>
+	</visual>
+	
+	<collision>
+		<geometry>
+			<box size="${body_link_x_dim} ${body_link_y_dim} ${body_link_z_dim}"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0"/>
+	</collision>
+	
+	<inertial>
+		<origin rpy="0 0 0" xyz="0 0 0"/>
+		<mass value="${body_mass}"/>
+	<inertia
+	ixx="${(1/12)*body_mass*(body_link_y_dim*body_link_y_dim+body_link_z_dim*body_link_z_dim)}"
+	ixy="0"
+	ixz="0" iyy="${(1/12)*body_mass*(body_link_x_dim*body_link_x_dim+body_link_z_dim*body_link_z_dim)}"
+	iyz="0"
+	izz="${(1/12)*body_mass*(body_link_y_dim*body_link_y_dim+body_link_x_dim*body_link_x_dim)}"/>
+	</inertial>
+</link>
+
+<!-- ############################################## -->
+<!-- End: Body link of the robot                  -->
+<!-- ############################################## -->
