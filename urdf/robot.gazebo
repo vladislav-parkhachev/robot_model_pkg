@@ -107,4 +107,14 @@
     </sensor>
   </gazebo>
 
+	<gazebo>
+      <plugin name="base_controller" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryRate>100.0</odometryRate>
+        <robotBaseFrame>dummy</robotBaseFrame>
+      </plugin>
+    </gazebo>
+
 </robot>

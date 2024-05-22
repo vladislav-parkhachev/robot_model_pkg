@@ -10,10 +10,18 @@
         <arg name="debug" value="false"/>
     </include>
 
+    <param name="robot_description" textfile="$(find robot_model_pkg)/urdf/robot.xacro" />
+
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
     <!-- Load the robot description -->
     <param name="robot_description" command="$(find xacro)/xacro '$(find robot_model_pkg)/urdf/robot.xacro'"/>
     <!-- Robot state publisher node -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
     <!-- Spawn the model -->
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model robot_model -param robot_description"/>
+
+	<node pkg="gmapping" type="slam_gmapping" name="abot_slam_gmapping" output="screen">
+		<rosparam command="load" file="$(find robot_model_pkg)/config/gmapping_params.yaml"/>
+	</node>
+
 </launch>
