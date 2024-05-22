@@ -223,4 +223,36 @@
 <!-- END: Front left wheel of the robot and the joint  -->
 <!-- ################################################# -->
 
+<!-- Hokuyo Laser -->
+
+<joint name="hokuyo_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.35 0 0.20" rpy="0 0 0"/>
+    <parent link="body_link"/>
+    <child link="hokuyo_link"/>
+</joint> 
+
+<link name="hokuyo_link">
+	<!-- <collision>
+    	<origin xyz="0 0 0" rpy="0 0 0"/>
+      	<geometry>
+    		<box size="0.1 0.1 0.1"/>
+      	</geometry>
+    </collision> -->
+
+    <visual>
+      	<origin xyz="0 0 0" rpy="0 0 0"/>
+      	<geometry>
+        	<!-- <mesh filename="package://robot_model_pkg/meshes/hokuyo.dae"/> -->
+			<cylinder length="${wheel_link_length}" radius="${wheel_link_radius}"/>
+      	</geometry>
+    </visual>
+
+    <!-- <inertial>
+      	<mass value="1e-5" />
+      	<origin xyz="0 0 0" rpy="0 0 0"/>
+      	<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial> -->
+</link>
+
 </robot>
